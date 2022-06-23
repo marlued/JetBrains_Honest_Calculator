@@ -1,16 +1,20 @@
-# This is a sample Python script.
+msg_0 = 'Enter an equation '
+msg_1 = 'Do you even know what numbers are? Stay focused!'
+msg_2 = "Yes ... an interesting math operation. You've slept through all classes, haven't you?"
+list_of_operands = ["+", "-", "*", "/"]
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+while True:
 
+    print(msg_0)
+    calc = input()
+    x, oper, y = calc.split()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+    try:
+        x, y = int(x), int(y)
+    except ValueError:
+        print(msg_1)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if oper not in list_of_operands:
+        print(msg_2)
+    else:
+        quit()
