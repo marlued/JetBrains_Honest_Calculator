@@ -1,20 +1,41 @@
-msg_0 = 'Enter an equation '
-msg_1 = 'Do you even know what numbers are? Stay focused!'
-msg_2 = "Yes ... an interesting math operation. You've slept through all classes, haven't you?"
-list_of_operands = ["+", "-", "*", "/"]
+message_1 = 'Enter an equation '
+message_2 = 'Do you even know what numbers are? Stay focused!'
+message_3 = "Yes ... an interesting math operation. You've slept through all classes, haven't you?"
+OPERATORS = tuple('+ - * /'.split())
 
 while True:
 
-    print(msg_0)
-    calc = input()
-    x, oper, y = calc.split()
+    print(message_1)
+
+    x, operator, y = input().strip().split()
 
     try:
-        x, y = int(x), int(y)
-    except ValueError:
-        print(msg_1)
 
-    if oper not in list_of_operands:
-        print(msg_2)
-    else:
-        quit()
+        if '.' not in x:
+            x = int(x)
+        elif '.' in x:
+            x = float(x)
+
+    except ValueError:
+
+        print(message_2)
+        continue
+
+    try:
+
+        if '.' not in y:
+            y = int(y)
+        elif '.' in y:
+            y = float(y)
+
+    except ValueError:
+
+        print(message_2)
+        continue
+
+    if operator not in OPERATORS:
+
+        print(message_3)
+        continue
+
+    break
