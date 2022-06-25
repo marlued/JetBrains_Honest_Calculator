@@ -26,10 +26,10 @@ while True:
     print(message_1)
     x, op, y = input().strip().split()
 
-    if x == 'M':
+    if x == 'M' and memory != 0:
         x = memory
 
-    if y == 'M':
+    if y == 'M' and memory != 0:
         y = memory
 
     if not isinstance(x, float):
