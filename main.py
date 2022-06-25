@@ -75,11 +75,9 @@ while True:
     while True:
         print(message_5)
         answer = input().strip()
-        print(answer)
 
         if answer == 'y':
             memory = result
-            print(memory)
             break
 
         elif answer == 'n':
