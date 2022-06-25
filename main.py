@@ -1,4 +1,3 @@
-
 def calculator(number_one, number_two, operator):
     if operator == '+':
         return float(number_one + number_two)
@@ -12,10 +11,15 @@ def calculator(number_one, number_two, operator):
         raise ZeroDivisionError
 
 
+memory = 0
+
 message_1 = 'Enter an equation '
 message_2 = 'Do you even know what numbers are? Stay focused!'
 message_3 = "Yes ... an interesting math operation. You've slept through all classes, haven't you?"
 message_4 = 'Yeah... division by zero. Smart move...'
+message_5 = 'Do you want to store the result? (y / n):'
+message_6 = 'Do you want to continue calculations? (y / n):'
+
 OPERATORS = tuple('+ - * /'.split())
 
 while True:
@@ -62,4 +66,32 @@ while True:
         continue
 
     print(result)
-    break
+
+    while True:
+        print(message_5)
+        answer = input().strip()
+        print(answer)
+
+        if answer == 'y':
+            memory = result
+            print(memory)
+            break
+
+        elif answer == 'n':
+            break
+
+        else:
+            continue
+
+    while True:
+        print(message_6)
+        answer = input().strip()
+
+        if answer == 'y':
+            break
+
+        elif answer == 'n':
+            quit()
+
+        else:
+            continue
