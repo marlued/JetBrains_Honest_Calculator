@@ -23,34 +23,40 @@ message_6 = 'Do you want to continue calculations? (y / n):'
 OPERATORS = tuple('+ - * /'.split())
 
 while True:
-
     print(message_1)
-
     x, op, y = input().strip().split()
 
-    try:
+    if x == 'M':
+        x = memory
 
-        if '.' not in x:
-            x = int(x)
-        elif '.' in x:
-            x = float(x)
+    if y == 'M':
+        y = memory
 
-    except ValueError:
+    if not isinstance(x, float):
 
-        print(message_2)
-        continue
+        try:
 
-    try:
+            if '.' not in x:
+                x = int(x)
+            elif '.' in x:
+                x = float(x)
 
-        if '.' not in y:
-            y = int(y)
-        elif '.' in y:
-            y = float(y)
+        except ValueError:
+            print(message_2)
+            continue
 
-    except ValueError:
+    if not isinstance(y, float):
 
-        print(message_2)
-        continue
+        try:
+
+            if '.' not in y:
+                y = int(y)
+            elif '.' in y:
+                y = float(y)
+
+        except ValueError:
+            print(message_2)
+            continue
 
     if op not in OPERATORS:
         print(message_3)
@@ -61,7 +67,6 @@ while True:
         result = calculator(x, y, op)
 
     except ZeroDivisionError:
-
         print(message_4)
         continue
 
