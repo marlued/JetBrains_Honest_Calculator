@@ -12,6 +12,7 @@ def calculator(number_one, number_two, operator):
 
 
 memory = 0
+memory_used = False
 
 message_1 = 'Enter an equation '
 message_2 = 'Do you even know what numbers are? Stay focused!'
@@ -26,13 +27,17 @@ while True:
     print(message_1)
     x, op, y = input().strip().split()
 
-    if x == 'M' and memory != 0:
+    if x == 'M' and memory_used:
         x = memory
+    else:
+        x = x
 
-    if y == 'M' and memory != 0:
+    if y == 'M' and memory_used:
         y = memory
+    else:
+        y = y
 
-    if not isinstance(x, float):
+    if isinstance(x, str):
 
         try:
 
@@ -45,7 +50,7 @@ while True:
             print(message_2)
             continue
 
-    if not isinstance(y, float):
+    if isinstance(y, str):
 
         try:
 
@@ -78,6 +83,7 @@ while True:
 
         if answer == 'y':
             memory = result
+            memory_used = True
             break
 
         elif answer == 'n':
