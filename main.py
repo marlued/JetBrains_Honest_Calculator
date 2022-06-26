@@ -11,6 +11,34 @@ def calculator(number_one, number_two, operator):
         raise ZeroDivisionError
 
 
+def is_one_digit(v):
+    v = float(v)
+    return v.is_integer() and (v > -10) and (v < 10)
+
+
+def check(v1, v2, v3):
+    msg_6 = " ... lazy"
+    msg_7 = " ... very lazy"
+    msg_8 = " ... very, very lazy"
+    msg_9 = "You are"
+
+    msg = ''
+
+    if is_one_digit(v1) and is_one_digit(v2):
+        msg = msg + msg_6
+
+    if (v1 == 1 or v2 == 1) and v3 == '*':
+        msg = msg + msg_7
+
+    if (v1 == 0 or v2 == 0) and (v3 == '*' or v3 == '+' or v3 == '-'):
+        msg = msg + msg_8
+
+    if msg != '':
+        msg = msg_9 + msg
+
+    print(msg)
+
+
 memory = 0
 
 message_1 = 'Enter an equation '
@@ -61,6 +89,8 @@ while True:
     if op not in OPERATORS:
         print(message_3)
         continue
+
+    check(x, y, op)
 
     try:
 
