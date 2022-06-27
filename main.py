@@ -40,6 +40,7 @@ def check(v1, v2, v3):
 
 
 memory = 0
+ask_for_saving = False
 
 message_1 = 'Enter an equation '
 message_2 = 'Do you even know what numbers are? Stay focused!'
@@ -47,6 +48,13 @@ message_3 = "Yes ... an interesting math operation. You've slept through all cla
 message_4 = 'Yeah... division by zero. Smart move...'
 message_5 = 'Do you want to store the result? (y / n):'
 message_6 = 'Do you want to continue calculations? (y / n):'
+message_10 = "Are you sure? It is only one digit! (y / n)"
+message_11 = "Don't be silly! It's just one number! Add to the memory? (y / n)"
+message_12 = "Last chance! Do you really want to embarrass yourself? (y / n)"
+
+stupid_answers = {10: message_10,
+                  11: message_11,
+                  12: message_12}
 
 OPERATORS = tuple('+ - * /'.split())
 
@@ -103,12 +111,53 @@ while True:
     print(result)
 
     while True:
-        print(message_5)
-        answer = input().strip()
+
+        if ask_for_saving:
+            break
+
+        else:
+            print(message_5)
+            answer = input().strip()
 
         if answer == 'y':
-            memory = result
-            break
+            # beginning of adjustments
+
+            if not is_one_digit(result):
+                memory = result
+                break
+
+            else:
+                msg_index = 10
+
+                while True:
+
+                    output = stupid_answers[msg_index]
+
+                    print(output)
+
+                    user_input = input().strip()
+
+                    if user_input == 'y':
+
+                        if msg_index < 12:
+                            msg_index += 1
+                            continue
+
+                        else:
+                            print('End of while-loop')  # just for debugging
+                            memory = result
+                            ask_for_saving = True
+                            break
+
+                    if user_input == 'n':
+                        # print('End of while-loop')  # just for debugging
+                        memory = result
+                        ask_for_saving = True
+                        break
+
+                    else:
+                        continue
+            # End of adjustments
 
         elif answer == 'n':
             break
@@ -121,6 +170,7 @@ while True:
         answer = input().strip()
 
         if answer == 'y':
+            ask_for_saving = False
             break
 
         elif answer == 'n':
