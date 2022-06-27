@@ -144,14 +144,13 @@ while True:
                             continue
 
                         else:
-                            print('End of while-loop')  # just for debugging
+                            # print('End of while-loop')  # just for debugging
                             memory = result
                             ask_for_saving = True
                             break
 
                     if user_input == 'n':
                         # print('End of while-loop')  # just for debugging
-                        memory = result
                         ask_for_saving = True
                         break
 
